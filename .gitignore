@@ -1,0 +1,5 @@
+# temporäre Exporte/Tests
+preview/_*
+*.bak
+# OpenSCAD-Backups
+*.scad~
