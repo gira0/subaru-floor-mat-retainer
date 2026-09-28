@@ -85,4 +85,5 @@ subaru, xv, crosstrek, floor mat, floormat, retainer, clip, hook, car, automotiv
 
 ## License
 
-[choose: CC BY / CC BY-NC / CC BY-SA – see chat]
+Creative Commons – Attribution – Noncommercial (CC BY-NC 4.0)
+(Printables: "Creative Commons — Attribution — Noncommercial")

@@ -146,3 +146,8 @@ The strip and the rib are each generated as one closed mesh along the path (`swe
 The piecewise version produced over 3000 non-manifold edges at the bends in OpenSCAD 2021, which OrcaSlicer complains about.
 Where parts would otherwise touch exactly, they overlap slightly or are offset by 0.001 mm for the same reason.
 The current STL has 0 non-manifold edges, for all variants of `clip_style` and `clip_at_tip`.
+
+## License
+
+This project is licensed under [Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+You may print, share and modify it with credit, but not use it commercially (e.g. sell prints).
