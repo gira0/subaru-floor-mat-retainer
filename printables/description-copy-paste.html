@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Printables description – copy &amp; paste</title>
+<style>
+  body { font-family: sans-serif; max-width: 760px; margin: 2em auto; line-height: 1.5; padding: 0 16px; }
+  .hint { background: #fff3cd; padding: 8px 12px; border-radius: 6px; font-size: 14px; }
+</style>
+</head>
+<body>
+<p class="hint">Open this file in your browser, press Ctrl+A, Ctrl+C, then click into the Printables description field, Ctrl+A to replace the old text, and Ctrl+V. Delete this yellow line afterwards if it gets pasted too.</p>
+
+<p>A printable replacement for the Subaru floor mat retainer: the hook that holds the floor mat in place, with a pin for the mat's eyelet and a clip that pushes into the hole in the car floor.</p>
+
+<p><strong>OEM part numbers:</strong> J501EAJ000 (EU) / J501SAJ300 (US)</p>
+
+<p><strong>Tested in:</strong> Subaru XV (European Crosstrek), 2014, 2.0D 147 PS. The printed part fits, clips in and holds the mat firmly.<br>
+The left and right originals are identical (not mirrored), so one model covers both sides.<br>
+Other Subaru models that use the same part number should fit too, but I have only tested the XV. Please post a make or a comment if it fits your car.</p>
+
+<p>The original was hard to get and shipping it in was expensive, so I measured an original with calipers and rebuilt it as a parametric OpenSCAD model. It went through two test prints before it was "barely distinguishable" from the original.</p>
+
+<h3>Printing</h3>
+<ul>
+  <li><strong>Orientation:</strong> print it <strong>on its side</strong>, exactly as the STL is saved. That way all bends lie within the layers and do not break along layer lines.</li>
+  <li><strong>Supports:</strong> tree supports, "on build plate only", only needed for the pin and the clip.</li>
+  <li><strong>Enable "Detect thin walls"</strong> in your slicer (OrcaSlicer/PrusaSlicer: Quality tab). The clip lamellae are only 0.6 mm thick and are otherwise left out. Check the slice preview.</li>
+  <li>Brim 3–5 mm helps, because the part stands on a narrow edge.</li>
+  <li>0.4 mm nozzle, 0.2 mm layers, 4–5 walls. 40 % infill is enough for PLA/PETG, 100 % for TPU.</li>
+</ul>
+
+<h3>Material</h3>
+<ul>
+  <li><strong>PLA+</strong> works well for a test fit (that is what the tested part is made of). It is rigid, so the clip is tight going in: it needed a firm push with the foot, then sits very securely.</li>
+  <li><strong>For permanent use, print PETG, ASA or TPU.</strong> PLA softens at 55–60 °C, which a parked car easily reaches in summer.</li>
+  <li><strong>TPU 95A</strong> gives the flexibility of the original but grips a bit less firmly.</li>
+</ul>
+
+<h3>Customising (OpenSCAD)</h3>
+<p>bracket.scad is fully parametric. Every dimension is a named variable at the top of the file with a letter that matches the included dimension drawing (dimensions.svg). Open it in OpenSCAD and use <strong>Window → Customizer</strong>. Useful tweaks:</p>
+<ul>
+  <li>Clip too tight in a rigid material: reduce clip_fin_sz (lamella size) from 6.7 to about 6.3 mm.</li>
+  <li>Clip does not hold in your car: set clip_style = "hole" to get a screw hole instead.</li>
+  <li>Too soft in TPU: increase the strip thickness t by 0.5–1 mm.</li>
+</ul>
+<p>The exported STL is clean (0 non-manifold edges).</p>
+
+<h3>Transparency</h3>
+<p>I designed this with help from Claude (Anthropic's AI assistant) in Claude Code. I took all the measurements from the original part and checked every step against it and against test prints. Claude wrote and refined the OpenSCAD model from those measurements.</p>
+</body>
+</html>

@@ -6,3 +6,4 @@ preview/_*
 
 # saved Printables pages (contain account data)
 *.html
+!printables/*.html
