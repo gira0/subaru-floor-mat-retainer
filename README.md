@@ -1,161 +1,147 @@
-# Subaru Fußmatten-Halterung – OpenSCAD-Nachbau
+# Subaru Floor Mat Retainer – Parametric OpenSCAD Replacement
 
-Nachbau der Fußmatten-Halterung J501EAJ000 (EU) / J501SAJ300 (US) zum Selberdrucken.
+Printable replacement for the Subaru floor mat retainer / hook, OEM part number **J501EAJ000** (EU) / **J501SAJ300** (US).
+The original is hard to get and expensive to ship, so this is a parametric rebuild you can print yourself.
 
-| Datei | Wozu |
+**Tested in:** Subaru XV (European Crosstrek), 2014, 2.0D 147 PS. It fits and holds the mat firmly.
+The two originals (left/right) are identical, not mirrored, so one model covers both sides.
+
+The model was measured from an original part with calipers and refined over two test prints.
+It was designed with help from Claude (Anthropic's AI assistant) in Claude Code.
+
+| File | Purpose |
 |---|---|
-| `bracket.scad` | Das 3D-Modell. Alle Maße stehen ganz oben in der Datei. |
-| `bracket.stl` | Fertige Druckdatei für den Slicer, schon richtig hingelegt |
-| `masse.drawio` | **Maßzeichnung zum Ausfüllen.** Öffnen mit [app.diagrams.net](https://app.diagrams.net) oder der draw.io-App |
-| `masse.svg` | Dieselbe Zeichnung als Bild, zum schnellen Anschauen |
-| `preview/` | Ansichten des Modells zum Vergleich mit den Fotos |
-| `tools/make_drawing.py` | Erzeugt die Zeichnung neu |
+| `bracket.scad` | The OpenSCAD model. All dimensions are at the top of the file. |
+| `bracket.stl` | Ready-to-print file, already oriented for printing |
+| `dimensions.drawio` | Dimension drawing with all letters. Open with [app.diagrams.net](https://app.diagrams.net) or the draw.io app |
+| `dimensions.svg` | The same drawing as an image |
+| `preview/` | Renders of the model |
+| `tools/make_drawing.py` | Regenerates the drawing |
 
-## Wie das Teil aufgebaut ist
+## What the part looks like
 
-Das Original ist ein **Kunststoff-Spritzgussteil aus einem Stück**. Es ist kein Blech.
-Im Grunde ist es ein flaches Plastikband mit einer Stufe in der Mitte:
+It is a **single injection-moulded plastic part** (not sheet metal): a flat strip with a step in the middle.
 
 ```
       Pin                                Clip
        ▄                                  ▼
        █                     ┌────────────┬─────┐
-  ─────┴──────────┐         /              Haken│
-  gerades Stück   └────────┘ ← Stufe            ▼
+  ─────┴──────────┐         /              Hook │
+  straight part   └────────┘ ← step             ▼
 ```
 
-- **Pin**: der Pilzknopf. Auf ihn wird die Öse der Fußmatte gesteckt.
-- **Stufe**: Hier knickt das Band schräg nach oben und läuft dann wieder gerade weiter.
-- **Clip**: ein Stecker auf der Unterseite. Von unten gesehen ist er ein Plus, mit dünnen Lamellen-Platten an der Spitze. Er wird ins Loch im Fahrzeugboden gedrückt.
-- **Haken**: das um 90° nach unten gebogene Ende. Es greift unter eine Kante.
+- **Pin**: mushroom button. The eyelet of the floor mat goes over it.
+- **Step**: the strip bends up at an angle and then continues straight.
+- **Clip**: a plug on the underside that is pushed into the hole in the car floor. Seen from below it is a plus shape with thin lamella plates.
+- **Hook**: the end bent down by 90°. It grips under an edge.
 
-Die beiden Teile auf `img4.jpg` sind identisch, also nicht spiegelverkehrt. Das Modell passt deshalb für links und rechts.
+## Dimensions
 
-## Maße
+The letters are the same in `dimensions.drawio`, here and in `bracket.scad`.
 
-Die Buchstaben sind in `masse.drawio`, hier und in `bracket.scad` dieselben.
-
-| | Was | Wert | Status |
+| | What | Value | Status |
 |---|---|---|---|
-| A | Dicke des Bandes | 2,3 mm | gemessen |
-| B | Breite des Bandes | 20 mm (19,93) | gemessen |
-| C | Gesamtlänge, Teil flach hingelegt: Pin-Ende bis ganz außen am Haken (über die Rippe) | 147,9 mm | gemessen |
-| D | Gerades Stück am Pin-Ende, bis die Stufe anfängt | 51 mm | angepasst nach Probedruck (gemessen: 56) |
-| E | Wie viel höher der hintere Teil liegt | 30 mm | gemessen |
-| F | Länge der Stufe, waagerecht | 50 mm | angepasst nach Probedruck (gemessen: 45) |
-| G | Winkel der Stufe | 35,6° | angepasst: flacher, gleicher Biegeradius (gemessen: 40°) |
-| H | Hakentiefe: Oberseite Band bis Hakenspitze | 14,9 mm | gemessen |
-| I | Hakenwinkel | 90° | gemessen |
-| J | Abstand Pin-Mitte bis Bandende | 10 mm | gemessen |
-| K / L | Dicke Pin-Stiel / Pin-Kopf | 5 / 9 mm | gemessen |
-| M / N | Oberseite Band bis Unterkante Kopf / Kopfhöhe | 15 / 4 mm | gemessen |
-| O | Abstand Clip-Mitte bis Außenseite Haken | 20 mm | gemessen |
-| P | Wie weit der Clip unten heraussteht | 17,5 mm | gemessen |
-| Q | Clip: Lamellen-Größe (abgerundetes Quadrat) | 6,7 mm | gemessen |
-| R / S | Clip: Breite eines Plus-Stegs / Größe des Plus | 2,2 / 7 mm | gemessen |
-| T | Anzahl der Lamellen | 4 | gemessen |
-| U | Rippe: Breite | 3 mm | gemessen |
-| V | Rippe: Überstand an der Schräge | 4 mm | gemessen |
-| W | Rippe: Überstand am oberen Teil (Clip-Seite) | 2 mm | gemessen |
-| Z | Rippe auf dem geraden Stück am Pin: Gesamthöhe, mittig im Band | 5,5 mm | gemessen |
-| a | Querstreben: Pin-Mitte bis Mitte der 2. Strebe | 24,6 mm | angepasst nach Probedruck (gemessen: 21,6) |
-| b | Querstrebe: Dicke (längs gemessen) | 3 mm | gemessen |
-| c | Querstrebe: Überstand auf der Rückseite | 2 mm | gemessen |
-| d | Querstrebe: Länge quer zum Band | 20 mm (volle Breite) | gemessen |
-| e | Clip: Abstand der Lamellen (Mitte zu Mitte) | 1,8 mm | gemessen |
-| f | Clip: massiver Block direkt am Band | 1 mm | gemessen |
-| g | Clip: Dicke einer Lamelle | 0,6 mm | gemessen |
-| h | Clip: Eckenradius der Lamellen | 1,5 mm | *Schätzung* |
-| i | Clip: Länge der stumpfen Spitze | 3 mm | gemessen |
-| j | Clip: Breite des Plus ganz vorne an der Spitze | 1,5 mm | *Schätzung* |
-| k | Kuppel (Pin-Seite, gegenüber vom Clip): Durchmesser | 15 mm | gemessen |
-| l | Kuppel: Höhe in der Mitte | 2 mm | gemessen |
-| m | Anschlagblock an der Hakenspitze: Länge | 3 mm | gemessen |
+| A | Strip thickness | 2.3 mm | measured |
+| B | Strip width | 20 mm (19.93) | measured |
+| C | Overall length, part lying flat: pin end to the very outside of the hook (over the rib) | 147.9 mm | measured |
+| D | Straight section at the pin end, up to where the step starts | 51 mm | adjusted after test print (measured: 56) |
+| E | How much higher the upper section sits | 30 mm | measured |
+| F | Length of the step, measured horizontally | 50 mm | adjusted after test print (measured: 45) |
+| G | Slope angle | 35.6° | adjusted: flatter, same bend radius (measured: 40°) |
+| H | Hook depth: top of strip to hook tip | 14.9 mm | measured |
+| I | Hook angle | 90° | measured |
+| J | Pin centre to strip end | 10 mm | measured |
+| K / L | Pin shaft / pin head diameter | 5 / 9 mm | measured |
+| M / N | Top of strip to underside of head / head height | 15 / 4 mm | measured |
+| O | Clip centre to outside of hook | 20 mm | measured |
+| P | How far the clip sticks out below | 17.5 mm | measured |
+| Q | Clip: lamella size (rounded square) | 6.7 mm | measured |
+| R / S | Clip: width of one plus web / size of the plus | 2.2 / 7 mm | measured |
+| T | Number of lamellae | 4 | measured |
+| U | Rib: width | 3 mm | measured |
+| V | Rib: height above the strip on the slope | 4 mm | measured |
+| W | Rib: height above the strip on the upper (clip) section | 2 mm | measured |
+| Z | Rib on the straight pin section: total height, centred in the strip | 5.5 mm | measured |
+| a | Cross struts: pin centre to centre of the 2nd strut | 24.6 mm | adjusted after test print (measured: 21.6) |
+| b | Cross strut: thickness (lengthwise) | 3 mm | measured |
+| c | Cross strut: height on the back | 2 mm | measured |
+| d | Cross strut: length across the strip | 20 mm (full width) | measured |
+| e | Clip: lamella spacing (centre to centre) | 2.5 mm | changed in the model (measured: 1.8) – to be confirmed |
+| f | Clip: solid block right at the strip | 1 mm | measured |
+| g | Clip: lamella thickness | 0.6 mm | measured |
+| h | Clip: lamella corner radius | 1.5 mm | *estimate* |
+| i | Clip: length of the blunt tip | 3 mm | measured |
+| j | Clip: width of the plus at the very tip | 1.5 mm | *estimate* |
+| k | Dome (pin side, opposite the clip): diameter | 15 mm | measured |
+| l | Dome: height at the centre | 2 mm | measured |
+| m | Stop block at the hook tip: length | 3 mm | measured |
 
-*Schätzung* bedeutet: noch nicht gemessen, sondern aus den Fotos abgeleitet.
+*Estimate* means: not measured, derived from photos or by eye.
 
-**Den Biegeradius der Stufe muss man nicht messen.** Er ergibt sich aus E, F und G und liegt bei etwa 11,5 mm innen.
+**The bend radius of the step does not need measuring.** It follows from E, F and G (about 11.5 mm inside).
 
-**Rundes Ende:** Das Pin-Ende ist ein Halbkreis mit dem Radius der halben Bandbreite, der Pin sitzt in seinem Mittelpunkt.
-Deshalb ist J = B/2.
+**Rounded end:** the pin end is a half circle with a radius of half the strip width, and the pin sits at its centre, so J = B/2.
 
-**Rippe:** Der Versteifungssteg (U, 3 mm breit) läuft mittig längs über das Band.
-Auf dem geraden Stück am Pin sitzt er mittig im Band: 5,5 mm hoch (Z), steht also oben und unten je 1,6 mm über und geht in den Pin über.
-Auf der Rückseite läuft er am Pin vorbei bis ganz ans runde Ende.
-Die Rippe ist dabei ein durchgehender Steg mit gleichbleibender Höhe: In der Biegung am Fuß der Schräge wandert er nach oben und geht einfach durch das Band hindurch.
-Unten taucht er dabei ins Band ein, oben wächst er auf die 4 mm der Schräge.
-In der Biegung am Fuß der Schräge wandert die Rippe ganz auf die Pin-Seite: An der Schräge steht sie 4 mm über (V), auf dem oberen Teil 2 mm (W).
-Ihre Oberkante geht dort in einem runden Bogen vom geraden Stück in die Schräge über (`rib_fillet1`, Radius 8,5 mm, geschätzt).
-Dann läuft sie außen um den Haken bis zur Hakenspitze.
-Dort endet sie in einem Anschlagblock (m, 3 mm lang). Er geht über die volle Bandbreite und ist außen bündig mit der Rippe.
-In der Biegung zum oberen Teil geht die Oberkante der Rippe in einem runden Bogen von 4 auf 2 mm über (`rib_fillet`, Radius 15 mm, geschätzt).
-Mit `rib_side = -1` wandert die Rippe auf die Clip-Seite.
+**Rib:** the stiffening rib (U, 3 mm wide) runs lengthwise along the middle of the strip.
+- On the straight pin section it sits centred in the strip: 5.5 mm tall (Z), so it sticks out 1.6 mm on both sides and merges into the pin. On the back it runs past the pin all the way to the rounded end.
+- It is one continuous web of constant height. In the bend at the foot of the slope it moves up and simply passes through the strip: on the back it dips into the strip, on top it grows to the 4 mm of the slope (V). Its top edge follows a round arc there (`rib_fillet1`, radius 8.5 mm, estimate).
+- In the bend to the upper section its top edge goes from 4 to 2 mm (W) in a round arc (`rib_fillet`, radius 15 mm, estimate).
+- It then runs around the outside of the hook to the tip, where it ends in a stop block (m, 3 mm long) that spans the full strip width and is flush with the rib.
+- `rib_side = -1` moves the rib to the clip side.
 
-**Clip:** Direkt am Band sitzt ein 1 mm dicker Block (f), danach folgen 4 dünne Lamellen (0,6 mm) im Abstand von 1,8 mm (e).
-Dann kommt ein Plus aus zwei gekreuzten Stegen (R × S), dessen letzte 3 mm als stumpfe Spitze zusammenlaufen (i).
-Die Clip-Länge P = 17,5 mm zählt ab der Bandunterseite.
+**Clip:** right at the strip sits a 1 mm solid block (f), followed by 4 thin lamellae (0.6 mm, g) with equal gaps (spacing e).
+Then comes a plus of two crossed webs (R × S) whose last 3 mm taper to a blunt tip (i).
+The clip length P = 17.5 mm is measured from the underside of the strip.
 
-**Kuppel:** Gegenüber vom Clip, auf der Pin-Seite des Bandes, sitzt eine flache runde Kuppel (15 mm Ø, in der Mitte 2 mm hoch).
-Sie läuft zum Rand hin flach aus und geht in die Rippe über.
+**Dome:** opposite the clip, on the pin side of the strip, is a flat round dome (15 mm Ø, 2 mm high at the centre). It fades out towards its rim and merges with the rib.
 
-**Querstreben:** Auf der Rückseite des Pin-Endes sitzen zwei quer liegende Stege, einer direkt unter dem Pin und einer 24,6 mm weiter (a).
-Ein- und ausschalten lassen sie sich mit `struts`.
+**Cross struts:** on the back of the pin end there are two transverse webs, one directly under the pin and one 24.6 mm further (a). They can be switched off with `struts`.
 
-### So trägst du neue Werte ein
+### Changing dimensions
 
-1. `bracket.scad` in OpenSCAD öffnen.
-2. Oben die Zeile mit dem passenden Buchstaben suchen, z. B. `hook_depth = 14.9; // H …`, und die Zahl ändern.
-   Alternativ geht das über **Fenster → Customizer**, dort gibt es für jedes Maß ein Eingabefeld.
-3. Mit F6 rendern, dann **Datei → Exportieren → STL**.
+1. Open `bracket.scad` in OpenSCAD.
+2. Find the line with the matching letter at the top, e.g. `hook_depth = 14.9; // H …`, and change the number.
+   Or use **Window → Customizer**, which shows an input field for every dimension.
+3. Render with F6, then **File → Export → STL**.
 
-Über die Kommandozeile geht es auch:
+From the command line:
 
 ```sh
 openscad -o bracket.stl bracket.scad
-openscad -D hook_depth=24 -o bracket.stl bracket.scad   # einzelnen Wert überschreiben
+openscad -D hook_depth=16 -o bracket.stl bracket.scad   # override a single value
 ```
 
-## Material und Druck
+## Material and printing
 
-**Zu TPU:** Das Original ist ziemlich steif. Die Federwirkung kommt aus der Form, nicht aus weichem Material.
-TPU 95A mit 2,3 mm Dicke wird merklich weicher: Der Haken hält weniger fest, und der Pin gibt nach.
-Dagegen helfen zwei Einstellungen in `bracket.scad`:
+**Material:**
+- **Test fit:** PLA+ works well and is what the tested part was printed in. It is rigid, so the clip is tight going in (it needed a firm push with the foot) but then sits very securely.
+- **Final part:** PLA+ softens at about 55–60 °C, which a car interior easily reaches in summer. Use **PETG**, **ASA** or **TPU** for a part that stays in the car.
+- **TPU 95A** gives the flex of the original but is softer: the hook grips less and the clip lamellae give way more easily. If it is too soft, increase `t` (A) by 0.5–1 mm or make the rib stronger (`rib_w`, `rib_ramp`).
+- For rigid materials (PETG, PLA+) you can make the clip easier to insert by reducing the lamella size `clip_fin_sz` (Q) from 6.7 to about 6.3 mm.
+- If the clip does not hold in your car, `clip_style = "hole"` replaces it with a screw hole.
 
-- `t` (A) um 0,5–1 mm erhöhen. Das macht das Band dicker und deutlich steifer.
-- Die Rippe verstärken: `rib_w` (U) auf 4–5 mm oder `rib_below` (V) auf 5–6 mm setzen.
+**Orientation: on its side** (the STL is already saved this way).
+The strip width (20 mm) becomes the print height, so the extrusion lines run through all bends and the bends are not loaded across layer lines.
+The strip needs no support; only the pin and the clip stick out sideways and need some.
 
-Ist es dann immer noch zu weich, wäre PETG die steifere Alternative mit etwas Restflexibilität.
-Die Lamellen am Clip sind sehr dünn. In TPU geben sie leicht nach, der Clip rastet zwar ein, lässt sich aber leichter herausziehen. Notfalls `clip_style = "hole"` einstellen und das Teil festschrauben.
+**Slicer notes (OrcaSlicer, tested on an Anycubic Kobra S1):**
+- 0.4 mm nozzle, 0.2 mm layers
+- 4–5 walls (the thin strip is effectively solid), 100 % infill for TPU / 40 % is fine for PLA+ and PETG
+- Tree support, "on build plate only", top Z distance 0.2–0.25 mm
+- Brim 3–5 mm, because the contact area is narrow
+- **Enable "Detect thin walls"** (Quality tab). Otherwise the 0.6 mm clip lamellae are left out. Check in the slice preview. If it still fails, set `clip_fin_t` to 0.8.
+- TPU: 20–30 mm/s, max. volumetric flow about 3–4 mm³/s, short slow retraction, dry the filament first
 
-### Druckausrichtung: auf der Seite (so ist das STL schon gespeichert)
+## Modelling assumptions
 
-Das Teil liegt mit der Seitenkante auf dem Druckbett, die Bandbreite (20 mm) ist dann die Druckhöhe.
-Dadurch laufen die Druckbahnen durch alle Biegungen hindurch. Beim Biegen werden also nicht die Schichtgrenzen belastet, und das Band braucht keinen Support.
-Nur Pin und Clip stehen dann waagerecht ab und brauchen etwas Support.
+- The strip has the same thickness and width everywhere.
+- Both bends of the step have the same radius.
+- The pin head is a disc whose rim is fully rounded top and bottom (radius = half the head height).
+- The small nubs on the edges of the original are not modelled; they look like moulding marks.
 
-### OrcaSlicer-Hinweise (TPU 95A, Anycubic Kobra S1)
+## Technical note: clean mesh
 
-- Düse 0,4 mm, Schichthöhe 0,2 mm
-- **Wände: 4–5.** Beim dünnen Band ist das praktisch massiv. Infill 100 %, Muster Konzentrisch
-- Geschwindigkeit 20–30 mm/s, max. Volumenfluss ca. 3–4 mm³/s
-- Retraction kurz (0,5–1 mm) und langsam
-- Düse 220–230 °C, Bett 40–50 °C, Lüfter 30–50 %
-- Filament vorher trocknen (TPU zieht Feuchtigkeit)
-- Support: Tree, „nur auf Druckplatte“, Abstand oben 0,2–0,25 mm
-- Brim 3–5 mm, weil die Auflagefläche schmal ist
-- Clip-Lamellen (0,6 mm): Damit sie überhaupt gedruckt werden, in OrcaSlicer unter Qualität → „Detect thin wall“
-  (Dünne Wände erkennen) einschalten. Sonst werden sie weggelassen. Wenn es nicht klappt, `clip_fin_t` auf 0,8 setzen.
-
-## Annahmen im Modell
-
-- Das Band ist überall gleich dick und gleich breit.
-- Die Rippe steigt gleichmäßig an und läuft am Ende keilförmig aus.
-- Beide Biegungen der Stufe haben denselben Radius.
-- Der Pin-Kopf ist eine Scheibe, deren Rand oben und unten voll abgerundet ist (Radius = halbe Kopfhöhe).
-- Die kleinen Noppen an den Kanten des Originals sind nicht nachgebaut. Das halte ich für Spuren aus dem Spritzguss.
-
-## Technischer Hinweis: sauberes Netz
-
-Band und Rippe werden als je ein geschlossenes Netz entlang des Pfads erzeugt (`sweep_mesh`), nicht aus vielen `hull()`-Stücken.
-Die gestückelte Variante erzeugte in OpenSCAD 2021 an den Biegungen über 3000 non-manifold edges, die OrcaSlicer bemängelt.
-Das aktuelle STL hat 0 non-manifold edges. Das gilt für alle Varianten von `clip_style` und `clip_at_tip`.
+The strip and the rib are each generated as one closed mesh along the path (`sweep_mesh`), not from many `hull()` pieces.
+The piecewise version produced over 3000 non-manifold edges at the bends in OpenSCAD 2021, which OrcaSlicer complains about.
+Where parts would otherwise touch exactly, they overlap slightly or are offset by 0.001 mm for the same reason.
+The current STL has 0 non-manifold edges, for all variants of `clip_style` and `clip_at_tip`.
