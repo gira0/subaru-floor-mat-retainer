@@ -9,6 +9,8 @@ The two originals (left/right) are identical, not mirrored, so one model covers 
 The model was measured from an original part with calipers and refined over two test prints.
 It was designed with help from Claude (Anthropic's AI assistant) in Claude Code.
 
+**Printables:** https://www.printables.com/model/1858866
+
 | File | Purpose |
 |---|---|
 | `bracket.scad` | The OpenSCAD model. All dimensions are at the top of the file. |

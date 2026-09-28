@@ -66,7 +66,7 @@ I designed this with help from Claude (Anthropic's AI assistant) in Claude Code.
 - **Your own photos first** (Printables shows the first image as the cover): the print next to the original, and the part installed in the car.
 - Then the renders from this folder: `01-overview.png`, `02-side.png`, `03-below.png`, `04-clip-hook.png`, `05-pin-end.png`,
   and the dimension drawing `06-dimensions.png`.
-- **Do not use the photos in `img/`**; they look like shop product photos and are probably someone else's copyright.
+- The reference photos of the original used during design are not part of this repository; they are shop product photos and not ours to publish.
 
 ## Print settings (the form fields)
 
