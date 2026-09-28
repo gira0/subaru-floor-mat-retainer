@@ -17,6 +17,7 @@ It was designed with help from Claude (Anthropic's AI assistant) in Claude Code.
 | `dimensions.svg` | The same drawing as an image |
 | `preview/` | Renders of the model |
 | `tools/make_drawing.py` | Regenerates the drawing |
+| `printables/` | Listing text (`DESCRIPTION.md`) and render images for printables.com |
 
 ## What the part looks like
 
