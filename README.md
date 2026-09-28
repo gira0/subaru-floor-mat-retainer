@@ -67,7 +67,7 @@ The letters are the same in `dimensions.drawio`, here and in `bracket.scad`.
 | b | Cross strut: thickness (lengthwise) | 3 mm | measured |
 | c | Cross strut: height on the back | 2 mm | measured |
 | d | Cross strut: length across the strip | 20 mm (full width) | measured |
-| e | Clip: lamella spacing (centre to centre) | 2.5 mm | changed in the model (measured: 1.8) – to be confirmed |
+| e | Clip: lamella spacing (centre to centre) | 2.5 mm | adjusted, tested in the car (measured: 1.8) |
 | f | Clip: solid block right at the strip | 1 mm | measured |
 | g | Clip: lamella thickness | 0.6 mm | measured |
 | h | Clip: lamella corner radius | 1.5 mm | *estimate* |
@@ -149,5 +149,5 @@ The current STL has 0 non-manifold edges, for all variants of `clip_style` and `
 
 ## License
 
-This project is licensed under [Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
-You may print, share and modify it with credit, but not use it commercially (e.g. sell prints).
+This project is licensed under [Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+You may print, share, modify and also sell it, as long as you give credit and share modified versions under the same license.
