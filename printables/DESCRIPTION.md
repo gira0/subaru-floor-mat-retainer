@@ -11,7 +11,9 @@ Subaru Floor Mat Retainer Hook – J501EAJ000 / J501SAJ300 (parametric)
 
 ## Summary (short text under the title)
 
-Printable replacement for the Subaru floor mat retainer clip (J501EAJ000 / J501SAJ300). Tested in a Subaru XV / Crosstrek 2014. Parametric OpenSCAD source included.
+Printable Subaru floor mat retainer (J501EAJ000 / J501SAJ300). Tested in an XV/Crosstrek 2014. Parametric OpenSCAD.
+
+(Printables cuts the summary at 120 characters; this one is 115.)
 
 ## Description
 
